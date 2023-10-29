@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 import os
 from PIL import Image
-from rembg import remove  # Make sure to install the rembg library
+from rembg import remove  
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     try:
-        #we delete all the existing input and output images (to save space :D)
+        #We delete all the existing input and output images (to save space :D)
         input_dir_path = './static/input/'
         output_dir_path = './static/output/'
     
