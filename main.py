@@ -7,6 +7,23 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    try:
+    #we delete all the existing input and output images (to save space :D)
+    input_dir_path = './static/input/'
+    output_dir_path = './static/output/'
+    
+    for x in os.listdir(input_dir_path):
+        filename = os.path.join(input_dir_path,x)
+        os.remove(filename)
+
+    for x in os.listdir(output_dir_path):
+        filename = os.path.join(output_dir_path,x)
+        os.remove(filename)
+
+    
+except Exception as e:
+    print(f'Could not delete: {e}')
+    
     return render_template('home.html')
 
 @app.route('/output', methods=['POST'])
